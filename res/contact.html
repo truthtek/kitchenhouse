@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="eat.css">
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .form-container {
+            background-image: linear-gradient(45deg, #330808, #3a2c09);
+            border-radius: 2.5em;
+            padding: 20px; /* Adjusted padding */
+            width: 320px; /* Adjusted width */
+            height: auto; /* Removed fixed height */
+            position: relative;
+            animation: dropDown 1s ease forwards;
+            transform: translateY(-100%);
+        }
+
+        .form::before {
+            content: '';
+            background-image: linear-gradient(45deg, #ff0000, #ffb700);
+            height: 358px;
+            width: 309px;
+            position: absolute;
+            margin-top: -34px;
+            margin-left: -5px;
+            z-index: -1;
+            border-radius: 2.7em;
+        }
+
+        .button {
+            margin-top: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 17px;
+            background: #ff5900;
+            color: black;
+            padding: 0.7em 2.5em; /* Adjusted padding */
+            display: flex;
+            align-items: center;
+            border: 2px solid #66da4300;
+            border-radius: 5em;
+            overflow: hidden;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            border: 2px solid #ff5900;
+            background: #00000000;
+            color: #ff5900;
+        }
+
+        .button:active {
+            border: 2px solid #66da4300;
+            background: #ff5900;
+            color: black;
+        }
+
+        .input {
+            width: 100%; /* Full width */
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #66da4300;
+            border-bottom: 1px solid #ff5900;
+            outline: none;
+            background-color: transparent;
+            color: #ff5900;
+            font-family: Arial, Helvetica, sans-serif;
+            transition: 0.2s;
+        }
+
+        .input:focus {
+            border: 1px solid #66da4300;
+            border-bottom: 1px solid #ff5900;
+            background-color: transparent;
+            color: white;
+        }
+
+        .input::placeholder {
+            color: #9b725b;
+        }
+
+        .textarea {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%; /* Full width */
+            padding: 8px;
+            height: 100px;
+            margin-bottom: 20px;
+            border: 1px solid #66da4300;
+            border-bottom: 1px solid #ff5900;
+            outline: none;
+            background-color: transparent;
+            color: #ff5900;
+        }
+
+        .textarea::placeholder {
+            color: #9b725b;
+        }
+
+        .textarea:focus {
+            border: 1px solid #66da4300;
+            border-bottom: 1px solid #ff5900;
+            background-color: transparent;
+            color: white;
+        }
+
+        @keyframes dropDown {
+            to {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form class="form">
+            <input class="input" type="text" placeholder="Name">
+            <input class="input" type="text" placeholder="E-Mail I.D.">
+            <textarea class="textarea" placeholder="Enter message"></textarea> 
+            <center><button class="button">Submit</button></center>
+        </form>
+    </div>
+
+    <script>
+        // You can add JavaScript here if needed
+    </script>
+</body>
+</html>
+
+    <script src="eat.js"></script>
+</body>
+</html>

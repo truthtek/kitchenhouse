@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Name</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="eat.css">
+</head>
+<style>
+    /* Reset some default styles */
+
+
+    /* Menu section styles */
+    .menus {
+        padding: 80px 0;
+    }
+
+    .menus-heading {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .menus-heading h2 {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .menus-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .menus-item {
+        flex: 0 1 calc(33.33% - 20px);
+        margin-bottom: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.2s ease; /* Add a subtle hover effect */
+    }
+
+    .menus-item:hover {
+        transform: translateY(-5px); /* Lift the item slightly on hover */
+    }
+
+
+    .menus-item-info {
+        padding: 20px;
+    }
+
+    .menus-item-name {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px; /* Increase spacing between name and description */
+    }
+
+    .menus-item-description {
+        font-size: 16px;
+        color: #777;
+        margin-top: 10px;
+    }
+
+    .menus-item-price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #ff5900;
+        margin-top: 10px;
+    }
+
+    /* Cart styles */
+    .cart {
+        position: fixed;
+        top: 0;
+        right: -500px;
+        width: 500px;
+        background-color: #453E3B;
+        height: 100vh;
+        transition: right 0.5s;
+        padding: 20px;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 2; /* Add a higher z-index to keep it above other content */
+    }
+
+    .cart.active {
+        right: 0;
+    }
+
+    /* Add background overlay when the cart is open */
+    .cart-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1; /* Ensure the overlay is above other content */
+        display: none;
+    }
+
+    /* Move total and checkout button up a bit */
+    .cart .checkout-section {
+        position: absolute;
+        bottom: 40px; /* Adjust spacing from the bottom */
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    cart h1 {
+        color: #E8BC0E;
+        font-weight: 100;
+        margin: 0;
+        padding: 0;
+        font-size: 24px; /* Adjust the font size */
+    }
+
+    .cart .checkout-section {
+        position: absolute;
+        bottom: 40px; /* Add some spacing from the bottom */
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cart .checkout-button {
+        background-color: #E8BC0E;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .cart .checkout-button:hover {
+        background-color: #ff5900;
+    }
+
+    /* Cart Item List Styles */
+    .cart-item-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .cart-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        background-color: #1C1F25; /* Dark background color for cart items */
+        padding: 10px; /* Add padding to cart items for better spacing */
+        border-radius: 5px; /* Add rounded corners to cart items */
+    }
+
+    .cart-item img {
+        width: 80px;
+        height: 80px;
+        border-radius: 10px;
+        margin-right: 20px;
+        object-fit: cover; /* Ensure the image fits within the container */
+    }
+
+    .cart-item-details {
+        flex: 1;
+    }
+
+    .cart-item-name {
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 5px;
+    }
+
+    .cart-item-price {
+        font-size: 16px;
+        color: #E8BC0E;
+    }
+
+    .cart-item-quantity {
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+    }
+
+    .cart-item-quantity button {
+        background-color: #fff5;
+        border: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 16px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .cart-item-count {
+        font-size: 16px;
+        color: #333;
+        margin: 0 10px;
+    }
+
+    /* ... (your existing cart styles) ... */
+</style>
+
+<body>
+    <header>
+            <div class="logo">
+                <img src="logo.png" alt="Restaurant Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#order"><i class="fas fa-shopping-cart"></i> Order</a></li>
+                    <li><a href="#cart" id="cartButton"><i class="fas fa-shopping-cart"></i> Cart
+                            <span id="cartItemCount">0</span></a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li>
+                        <input type="text" placeholder="Search">
+                        <button type="submit">Search</button>
+                    </li>
+                </ul>
+            </nav>
+    </header>
+
+    <section class="menus">
+        <div class="container">
+            <div class="menus-heading">
+                <h2>Our Menu</h2>
+            </div>
+
+            <div class="menus-items">
+                <!-- Menu items go here -->
+                <div class="menus-item">
+                    <img src="./image/senegales.jpeg" alt="Food Item 1">
+                    <div class="menu-item-info">
+                        <div class="menus-item-name">Food Item 1</div>
+                        <div class="menus-item-description">Description of Food Item 1</div>
+                        <div class="menus-item-price">$10.99</div>
+                        <button onclick="addToCart('item1', 'Food Item 1', 10.99)">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="menus-item">
+                    <img src="./image/senegales.jpeg" alt="Food Item 2">
+                    <div class="menus-item-info">
+                        <div class="menus-item-name">Food Item 2</div>
+                        <div class="menus-item-description">Description of Food Item 2</div>
+                        <div class="menus-item-price">$12.99</div>
+                        <button onclick="addToCart('item2', 'Food Item 2', 12.99)">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="menus-item">
+                    <img src="./image/senegales.jpeg" alt="Food Item 3">
+                    <div class="menus-item-info">
+                        <div class="menus-item-name">Food Item 3</div>
+                        <div class="menus-item-description">Description of Food Item 3</div>
+                        <div class="menus-item-price">$9.99</div>
+                        <button onclick="addToCart('item3', 'Food Item 3', 9.99)">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart">
+        <h1>Your Cart</h1>
+        <ul class="cart-item-list">
+            <!-- Cart items go here -->
+        </ul>
+        <div class="checkout-section">
+            <div class="total">Total: $0.00</div>
+            <div class="checkout-button">Checkout</div>
+        </div>
+    </div>
+
+    <!-- Background overlay when the cart is open -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <script>
+        const cartItems = {}; // Object to store cart items
+
+        function addToCart(itemId, itemName, itemPrice) {
+            if (!cartItems[itemId]) {
+                cartItems[itemId] = {
+                    name: itemName,
+                    price: itemPrice,
+                    quantity: 1
+                };
+            } else {
+                cartItems[itemId].quantity++;
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemList = document.querySelector('.cart-item-list');
+            cartItemList.innerHTML = '';
+            let total = 0;
+
+            for (const itemId in cartItems) {
+                const item = cartItems[itemId];
+                const cartItem = document.createElement('li');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                        <div class="cart-item-quantity">
+                            <button onclick="changeQuantity('${itemId}', -1)">-</button>
+                            <div class="cart-item-count">${item.quantity}</div>
+                            <button onclick="changeQuantity('${itemId}', 1)">+</button>
+                        </div>
+                    </div>`;
+                cartItemList.appendChild(cartItem);
+                total += item.price * item.quantity;
+            }
+
+            document.querySelector('.total').textContent = `Total: $${total.toFixed(2)}`;
+            document.querySelector('#cartItemCount').textContent = Object.keys(cartItems).length;
+        }
+
+        function changeQuantity(itemId, change) {
+            cartItems[itemId].quantity += change;
+            if (cartItems[itemId].quantity <= 0) {
+                delete cartItems[itemId];
+            }
+            updateCart();
+        }
+
+        // Add an event listener to the cart button
+        const cartButton = document.querySelector('#cartButton');
+        const cartOverlay = document.querySelector('#cartOverlay');
+
+        cartButton.addEventListener('click', () => {
+            const cart = document.querySelector('.cart');
+            cart.classList.toggle('active');
+            if (cart.classList.contains('active')) {
+                cartOverlay.style.display = 'block';
+            } else {
+                cartOverlay.style.display = 'none';
+            }
+        });
+
+        // Close the cart when clicking the overlay
+        cartOverlay.addEventListener('click', () => {
+            const cart = document.querySelector('.cart');
+            cart.classList.remove('active');
+            cartOverlay.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>

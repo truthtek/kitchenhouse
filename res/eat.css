@@ -1,0 +1,434 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+    /* Reset some default styles for the header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+header .logo img {
+    max-width: 100px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul li i {
+    margin-right: 5px; /* Add spacing between the icon and text */
+}
+
+/* Style the search box */
+nav input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+nav button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background-color: #0056b3;
+}
+
+/* ... Previous CSS code ... */
+
+/* Style the main section with a background image and opacity */
+#main-section {
+    background-image: url('./chris-liverani-oCsaxvGCehM-unsplash.jpg'); /* Replace 'background.jpg' with your image path */
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    height: 85vh; /* 30% of the viewport height */
+    display: flex;
+    
+}
+
+/* Style the content div within the main section */
+.content {
+    padding-left: 10%;
+    color: rgb(38, 36, 36);
+    padding-top: 10%;
+    
+}
+
+.content h2 {
+    margin-bottom: 5px;
+    font-size: 4.5rem;
+    animation: slideInFromLeft 1s ease-in;
+    
+}
+
+.content p {
+    margin-bottom: 15px;
+    animation: slideInFromLeft 3s ease-in;
+    font-size: 1.6rem;
+    padding-left: 10px; 
+}
+
+.content button {
+    margin-left: 150px;
+    background-color: rgb(151, 36, 36);
+    border: 15px solid rgb(151, 36, 36);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    animation: slideInFromLeft 2s ease-in;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ... Previous CSS code ... */
+
+/* Style the menu section */
+.menu1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    gap: 30px;
+    margin-left: 50px;
+    margin-right: 40px;
+
+}
+
+#menu h2 {
+    font-family:'Lobster', cursive ;
+    font-weight: bold;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style individual menu items */
+.menu-item {
+    flex: 0 0 30%; /* Each item takes up 30% of the available space */
+    text-align: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    opacity: 0; /* Initially hidden */
+    transform: translateX(-30px); /* Initial position to the left */
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.menu-item:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.menu-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.menu-item h3 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.menu-item .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(151, 36, 36);
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-item .button:hover {
+    background-color: #0056b3;
+}
+
+/* ... Previous CSS code ... */
+
+/* ... Previous CSS code ... */
+
+/* Style the About section */
+#about {
+    background-color: #f5f5f5;
+    padding: 40px 0;
+    text-align: center;
+    overflow: hidden; /* Added to clear floats */
+}
+
+.about-info {
+    margin-bottom: 30px;
+    overflow: hidden; /* Added to clear floats */
+}
+
+.about-info h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.about-info p {
+    font-size: 2rem;
+    color: #777;
+}
+
+
+.outlet-counter {
+    text-align: center;
+    padding: 0 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Style the counter */
+.counter {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #007bff;
+    float: left; /* Float to the left */
+    margin-right: 20px; 
+    width: 50%;/
+    
+}
+
+
+.counter p {
+    font-size: 2rem;
+    margin-top: 10px;
+
+}
+
+
+
+
+.outlet-slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    float: right; /* Float to the right */
+    margin-left: 20px; /* Add some space between counter and slider */
+}
+
+/* Style each slide */
+.slide {
+    min-width: 100%;
+    transition: transform 0.5s;
+    
+}
+
+/* Style the images within the slides */
+.slide img {
+    width: 50%;
+    height: auto;
+}
+
+/* ... Rest of your CSS code ... */
+
+/* Style the footer container */
+.footer {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Text color */
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* Style individual footer items (divs) */
+.footer-item {
+    flex: 1; /* Equal width for all items */
+    padding: 20px 50px 0 50px;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.footer-item h4 {
+    font-family: serif;
+    font-size: 24px;
+    color: #222;
+}
+
+.footer-item p {
+    font-family: cursive;
+    font-size: 18px;
+}
+
+/* Style the map container */
+.map {
+    height: 300px; /* Set an appropriate height for your map */
+    overflow: hidden; 
+   
+}
+
+/* Style for the copyright notice */
+.copyright {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 24px;
+    color: #888;
+    background-color: #333;
+}
+
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-top: 20%;
+    padding-right: 5px;
+  }
+  
+  .up {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+  }
+  
+  .down {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+  }
+  
+  .card1 {
+    width: 90px;
+    height: 90px;
+    outline: none;
+    border: none;
+    background: white;
+    border-radius: 90px 5px 5px 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .2s ease-in-out;
+  }
+  
+  .instagram {
+    margin-top: 1.5em;
+    margin-left: 1.2em;
+    fill: #cc39a4;
+  }
+  
+  .card2 {
+    width: 90px;
+    height: 90px;
+    outline: none;
+    border: none;
+    background: white;
+    border-radius: 5px 90px 5px 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .2s ease-in-out;
+  }
+  
+  .twitter {
+    margin-top: 1.5em;
+    margin-left: -.9em;
+    fill: #03A9F4;
+  }
+  
+  .card3 {
+    width: 90px;
+    height: 90px;
+    outline: none;
+    border: none;
+    background: white;
+    border-radius: 5px 5px 5px 90px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .2s ease-in-out;
+  }
+  
+  .github {
+    margin-top: -.6em;
+    margin-left: 1.2em;
+  }
+  
+  .card4 {
+    width: 90px;
+    height: 90px;
+    outline: none;
+    border: none;
+    background: white;
+    border-radius: 5px 5px 90px 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .2s ease-in-out;
+  }
+  
+  .discord {
+    margin-top: -.9em;
+    margin-left: -1.2em;
+    fill: #8c9eff;
+  }
+  
+  .card1:hover {
+    cursor: pointer;
+    scale: 1.1;
+    background-color: #cc39a4;
+  }
+  
+  .card1:hover .instagram {
+    fill: white;
+  }
+  
+  .card2:hover {
+    cursor: pointer;
+    scale: 1.1;
+    background-color: #03A9F4;
+  }
+  
+  .card2:hover .twitter {
+    fill: white;
+  }
+  
+  .card3:hover {
+    cursor: pointer;
+    scale: 1.1;
+    background-color: black;
+  }
+  
+  .card3:hover .github {
+    fill: white;
+  }
+  
+  .card4:hover {
+    cursor: pointer;
+    scale: 1.1;
+    background-color: #8c9eff;
+  }
+  
+  .card4:hover .discord {
+    fill: white;
+  }
+
+  
